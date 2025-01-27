@@ -15,15 +15,15 @@ module type S = sig
      The simplest way to create an existential type in OCaml is
      creating a GADT whose type does not carry all the variables in
      its constructor. (The other way involves first-class
-     modules. There is also a possible solution using rank N
-     polymorphism in a record which contains a function.)
+     modules. There is also a possible solution using rank N qualified
+     universal types in a record which contains a function.)
 
      When the GADT is unwrapped, unique existential types are assigned
      to the unused variables from constructor arguments. You can use
      this in a variety of interesting ways, but here we use use the
-     processing of wrapping and unwrapping the type our map simply to
-     avoid on one hand having a free type variable in the phantom type
-     or having to manually create and fill in concrete types on the
+     processing of wrapping and unwrapping our map simply to avoid on
+     one hand having a free type variable in the phantom type or
+     having to manually create and fill in concrete types on the
      other. *)
   type _ wrapped =
       Map : ('ph, 'elt) map -> 'elt wrapped
